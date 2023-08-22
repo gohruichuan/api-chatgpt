@@ -12,11 +12,11 @@ const openai = new OpenAIApi(configuration);
 const router = new express.Router();
 
 router.get("/", async (req, res) => {
-  const payload = req.body;
+  const payload = req.query;
 
   const schema = Joi.object({
     location: Joi.string().required(),
-    days: Joi.number().required(),
+    days: Joi.string().required(),
   }).required();
 
   try {
