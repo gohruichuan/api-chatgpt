@@ -42,12 +42,12 @@ router.get("/", async (req, res) => {
             // Format output to JSON`,
             `create a valid JSON array of objects for the best places to go in ${validData.location} for ${validData.days} Days in the Sequence of visits following this format:
             [{
-            "name":"introduction of the day",
+            "introduction":"write an introduction of the day",
             "places": [{
-            "name": "name of the place",
-            "opening_hours": "Opening hours of the place",
-            "description": "description of the place",
-            "transport": "Transport from place to place and its description"}]
+              "name": "name of the place",
+              "opening_hours": "Opening hours of the place",
+              "description": "description of the place",
+              "transport": "Transport from place to place and its description"}]
             }]`,
         },
       ],
