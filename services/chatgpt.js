@@ -21,7 +21,9 @@ router.get("/", async (req, res) => {
 
   try {
     const validData = await schema.validateAsync(payload);
+    console.log("validData.location ", validData.location);
 
+    console.log("validData.days ", validData.days);
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       temperature: 0,
@@ -29,14 +31,24 @@ router.get("/", async (req, res) => {
         { role: "system", content: "AI Travel Planner" },
         {
           role: "user",
-          content: `best places to go in ${validData.location} for ${validData.days} Days with the following:
-  
-          - Opening hours
-          - Sequence of visit
-          - description of the place
-          - Transport from place to place and its description
-          
-          Format output to JSON`,
+          content:
+            // `best places to go in ${validData.location} for ${validData.days} Days with the following:
+
+            // - Opening hours
+            // - Sequence of visit
+            // - description of the place
+            // - Transport from place to place and its description
+
+            // Format output to JSON`,
+            `create a valid JSON array of objects for the best places to go in ${validData.location} for ${validData.days} Days in the Sequence of visits following this format:
+            [{
+            "name":"introduction of the day",
+            "places": [{
+            "name": "name of the place",
+            "opening_hours": "Opening hours of the place",
+            "description": "description of the place",
+            "transport": "Transport from place to place and its description"}]
+            }]`,
         },
       ],
     });
