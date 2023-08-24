@@ -33,6 +33,7 @@ router.get("/", async (req, res) => {
   
           - Opening hours
           - Sequence of visit
+          - description of the place
           - Transport from place to place and its description
           
           Format output to JSON`,
