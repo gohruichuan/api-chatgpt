@@ -59,6 +59,7 @@ router.get("/", async (req, res) => {
       JSON.parse(JSON.stringify(completion.data.choices[0].message.content))
     );
   } catch (e) {
+    res.status(400);
     res.send(e);
   }
 });
