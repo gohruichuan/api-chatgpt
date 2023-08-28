@@ -13,6 +13,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/prompt", chatGPTController);
 
-app.listen(8080, () => {
-  console.log("listening on port 8080");
-});
+app.listen(process.env.PORT || 8080);
